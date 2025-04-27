@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color picker</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="container" style="height: 800px; width: 300px; display: flex; justify-content: center;">
+        <div class="content">
+           <div class="alert-box">Text copped <span><i class="fa-solid fa-check-to-slot"></i></span> </div>
+           <div class="navigation">
+               <div class="nav-list"> <span><i class="fa-solid fa-house"></i></i></span> Home</div>
+               <div class="nav-list"> <span><i class="fa-solid fa-house"></i></i></span> Contact</div>
+               <div class="nav-list" id="clearAll"> <span><i class="fa-solid fa-trash"></i></span> Clear all</div>
+           </div>
+           <div class="picked-colors">
+                <ul>
+                   <!-- <li data-color="red"> <div class="color-box" style="background-color: red; border: 1px solid #014ba0;"></div> #ffff <i class="fa-solid fa-clipboard"></i></li>
+                   <li> <div class="color-box" style="background-color: red;"></div> #ffff <i class="fa-solid fa-clipboard"></i></li> -->
+                </ul>
+            </div>
+            <div class="buttons">
+               <button type="button" id="picker-btn"><span><i class="fa-solid fa-eye-dropper"></i></span> PicColor</button>
+            </div>
+       </div>
+    </div>
+    <script src="./main.js"></script>
+</body>
+</html>

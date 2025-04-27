@@ -1,0 +1,133 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+body{
+    overflow-x: hidden;
+}
+:root{
+    --primary-color: rgb(0, 102, 255);
+    --hover-color: rgb(209, 209, 209);
+    --hover-color2: rgba(0, 102, 255, 0.192);
+    --secendery-color: rgba(230, 230, 230, 0.205);
+}
+.content{
+    width: 80%;
+    height: max-content;
+    margin:20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.navigation{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:10px;
+}
+.nav-list{
+    width: 100px;
+    height: 40px;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:10px;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+}
+.nav-list:hover{
+    background-color: var(--hover-color2);
+}
+.buttons{
+    height: max-content;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.buttons button{
+    width: 120px;
+    color:#fff;
+    height: 50px;
+    background-color: rgb(0, 102, 255);
+    border:none;
+    outline: none;
+    border-radius: 10px;
+    transition: .2s ease-in-out;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    font-size: 1rem;
+
+}
+.buttons button:hover{
+    background-color: rgb(1, 75, 160);
+}
+.picked-colors{
+    width: 100%;
+    height: max-content;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.picked-colors ul{
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    margin: 10px 0;
+    width: 100%;
+}
+.picked-colors ul li{
+    width: 100%;
+    background-color:rgba(230, 230, 230, 0.205);
+    padding:12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin:4px 0;
+    transition: .3s ease-in-out;
+}
+.picked-colors ul li:hover{
+    background-color: var(--hover-color);
+}
+.color-box{
+    height: 15px;
+    width: 15px;
+}
+.alert-box {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 86%;
+    height: 60px;
+    background-color: var(--primary-color);
+    margin: 20px;
+    border-radius: 10px;
+    transform: translateX(120%);
+    transition: all .4s ease-in-out;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+}
+.alert-box span{
+    margin: 0 10px;
+}
+.open-alert{
+    transform: translateX(0);
+}
