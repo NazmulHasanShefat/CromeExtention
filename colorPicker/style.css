@@ -1,12 +1,14 @@
 * {
     box-sizing: border-box;
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
 }
-body{
+
+body {
     font-family: "Roboto", sans-serif;
     font-weight: 500;
 }
+
 .wraper {
     width: 99%;
     height: 90%;
@@ -36,6 +38,7 @@ body{
     flex-direction: column;
     background-color: rgb(250, 250, 250);
     cursor: pointer;
+    position: relative;
 
     &:hover {
         background-color: rgb(233, 233, 233);
@@ -54,7 +57,8 @@ body{
         clip-path: polygon(33% 0, 42% 16%, 100% 16%, 100% 99%, 0 100%, 0 0);
     }
 }
-.pick_button{
+
+.pick_button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -68,15 +72,16 @@ body{
     background-color: black;
     border-radius: 10px;
     font-family: "JetBrains Mono", monospace;
-    color:#fff;
+    color: #fff;
     gap: 5px;
-    &::before{
+
+    &::before {
         position: absolute;
         content: "";
         left: 50%;
         top: 50%;
         /* background: #ff0000; */
-background: linear-gradient(90deg,rgba(255, 0, 0, 1) 0%, rgba(208, 0, 255, 1) 50%, rgba(69, 87, 252, 1) 100%);
+        background: linear-gradient(90deg, rgba(255, 0, 0, 1) 0%, rgba(208, 0, 255, 1) 50%, rgba(69, 87, 252, 1) 100%);
         height: 100%;
         background-size: 500px;
         background-position: 0;
@@ -89,43 +94,95 @@ background: linear-gradient(90deg,rgba(255, 0, 0, 1) 0%, rgba(208, 0, 255, 1) 50
         animation: glowborder 6s linear infinite;
     }
 }
+
 @keyframes glowborder {
-    0%{
+    0% {
         background-position: 0px;
     }
-    50%{
+
+    50% {
         background-position: 500px;
     }
-    100%{
+
+    100% {
         background-position: 0px;
     }
 }
-.popup{
+
+.popup {
     width: 80%;
     height: max-content;
     background-color: rgb(255, 255, 255);
-    position: absolute;
+    position: fixed;
     left: 50%;
     top: 50%;
     padding: 20px;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     border-radius: 5px;
     z-index: 6;
+    transition: .3s ease-in-out;
+    transform: scale(0);
 }
-.drop_shadow{
+
+.drop_shadow {
     position: absolute;
     left: 0;
     height: 100%;
     width: 100%;
-    top:0;
+    top: 0;
     background-color: #4646469f;
     z-index: 5;
 }
-.p_color_box{
-    padding:4px 10px;
+
+.p_color_box {
+    padding: 4px 10px;
     margin: 5px 0;
     background-color: #f1f1f1;
     font-weight: 600;
     border-radius: 4px;
     font-family: "JetBrains Mono", monospace;
+}
+
+.close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+}
+
+.btn_delete {
+    border: none;
+    outline: none;
+    background-color: red;
+    color: #fff;
+    padding: 4px 8px;
+    font-size: .6rem;
+    border-radius: 4px;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    cursor: pointer;
+}
+
+#copy_rgba,
+#copy_hex,
+#copy_hsl {
+    font-size: .5rem;
+}
+
+.close_folder {
+    position: absolute;
+    right: 3px;
+    top: -5px;
+    cursor: pointer;
+
+    svg path {
+        fill: black;
+    }
+
+    &:hover {
+        svg path {
+            fill: rgb(255, 0, 0);
+        }
+    }
 }
