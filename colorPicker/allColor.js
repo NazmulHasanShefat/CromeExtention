@@ -96,7 +96,7 @@ function hexToHSL(hex) {
 
   if (max === min) {
     h = s = 0;
-  } else {
+  } else {  
     const d = max - min;
     s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
 
