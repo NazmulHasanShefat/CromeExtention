@@ -9,19 +9,27 @@ const close_folder = document.querySelector(".close_folder");
 const pickColor = document.querySelector("#pickColor");
 
 
-const activateEyeDroper = async ()=>{
+const activateEyeDroper = async () => {
     try {
         const eyeDropper = new EyeDropper();
-    const result = await eyeDropper.open();
-    const color = result.sRGBHex;
-
+        const result = await eyeDropper.open();
+        const color = result.sRGBHex;
         console.log(color)
+        
     } catch (error) {
         console.error(error)
     }
 }
 
-pickColor.addEventListener("click",()=>{
-    console.log("hello")
-    activateEyeDroper();
+//pick color action
+pickColor.addEventListener("click", () => {
+    try {
+        if (window.EyeDropper) {
+            activateEyeDroper();
+        }else{
+            alert("eyedropper not support your browser please try on Google Chrome or microsoft Edge or Brave browser ")
+        }
+    } catch (error) {
+        console.log("faild to pick color");
+    }
 })
