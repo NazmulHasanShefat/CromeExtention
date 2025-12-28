@@ -4,6 +4,7 @@
     "version": "1.2.2",
     "description": "This is a color picker app you can coppy any website color",
     "action": {
-         "default_popup": "index.html"
+         "default_popup": "index.html",
+         "default_icon": "./images/colorpicker.png"
     }
   }
