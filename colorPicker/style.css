@@ -97,6 +97,7 @@ hr {
     text-decoration: underline;
     cursor: pointer;
     color: gray;
+
     &:hover {
         color: red;
     }
@@ -296,7 +297,8 @@ hr {
     font-size: .5rem;
     margin: 0;
     scale: 0.8;
-    &:hover{
+
+    &:active {
         scale: 0.7;
     }
 }
@@ -374,15 +376,17 @@ hr {
 /* switch tab function ui */
 .switch_tab {
     position: relative;
+
     .currentTab {
         padding: 4px 10px;
         cursor: pointer;
-       p{
-           transition: all .3s ease-in-out;
-           background: linear-gradient(90deg, #ff0080, #7928ca);
-           -webkit-background-clip: text;
-           -webkit-text-fill-color: transparent;
-       }
+
+        p {
+            transition: all .3s ease-in-out;
+            background: linear-gradient(90deg, #ff0080, #7928ca);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
         &:hover {
             background-color: #d1d1d1;
@@ -392,18 +396,17 @@ hr {
     .tablist {
         position: absolute;
         left: 50%;
-        /* top: 330%; */
-        top: 430%;
-        opacity: 0;
-        z-index: 999;
+        top: 30px;
+        transform: translate(-50%) scale(0);
         background-color: #fff;
-        transform: translate(-50%, -50%);
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         height: max-content;
         width: max-content;
         padding: 7px;
         border-radius: 6px;
-
+        z-index: 999;
+        transition: all .3s ease-in-out;
+        transform-origin:top center;
         li {
             padding: 4px 10px;
             cursor: pointer;
@@ -413,5 +416,9 @@ hr {
                 background-color: #d6d6d6;
             }
         }
+    }
+
+    .active_tabsMenu {
+        transform: translate(-50%) scale(1);
     }
 }

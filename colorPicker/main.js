@@ -27,7 +27,7 @@ nav_plusIcon.addEventListener("click", (e) => {
 })
 //open settings
 const setting_container = document.querySelector(".setting_container");
-setting_container.addEventListener("click",()=>{
+setting_container.addEventListener("click", () => {
     let div = document.createElement("div");
     div.innerHTML = `
     <div class="drop_shadow"></div>
@@ -72,23 +72,34 @@ setting_container.addEventListener("click",()=>{
         settings_panal.style.top = "45%";
         settings_panal.style.opacity = "1";
     }, 10);
-    
+
     const backDrop = document.querySelector(".drop_shadow");
     const closeSettings = document.querySelector("#closeSettings");
-    
-    backDrop.addEventListener("click",()=>{
-         settings_panal.style.top = "40%";
+
+    backDrop.addEventListener("click", () => {
+        settings_panal.style.top = "40%";
         settings_panal.style.opacity = "0";
         setTimeout(() => {
             document.body.removeChild(div);
         }, 300);
     })
-    closeSettings.addEventListener("click",()=>{
-       settings_panal.style.top = "40%";
+    closeSettings.addEventListener("click", () => {
+        settings_panal.style.top = "40%";
         settings_panal.style.opacity = "0";
         setTimeout(() => {
             document.body.removeChild(div);
         }, 300);
+    })
+})
+//open tabs
+const currentTab = document.querySelector(".currentTab");
+const tablist = document.querySelector(".tablist");
+currentTab.addEventListener("click", (e) => {
+    e.stopPropagation();
+    tablist.classList.toggle("active_tabsMenu")
+
+    document.body.addEventListener("click", () => {
+        tablist.classList.toggle("active_tabsMenu")
     })
 })
 
