@@ -108,7 +108,7 @@ function renderUIcolor(){
                 <div class="folder-icon-container" style="pointer-events: none;">
                     <div class="main-icon" style="background-color: ${color.hexColor}; pointer-events: none;"></div>
                 </div>
-                <p style="font-size: .5rem; margin:0;">${color.hexColor}</p>
+                <p style="font-size: .5rem; margin:0; pointer-events: none;">${color.hexColor}</p>
             </div>
         `;
         container.appendChild(colorPalet)
@@ -160,15 +160,15 @@ function toggleColorModal(e){
                     fill="#0F1729" />
             </svg>
         </div>
-        <div class="cp_btn_container"> <button type="button" class="pick_button" id="copy_rgba">copy rgba</button></div>
+        <div class="cp_btn_container"> <button type="button" class="pick_button" id="copy_rgb">copy rgba</button></div>
         <div class="p_color_box">
             <span>${rgb}</span>
         </div>
-        <div class="cp_btn_container"> <button type="button" class="pick_button" id="copy_rgba">copy hsl</button></div>
+        <div class="cp_btn_container"> <button type="button" class="pick_button" id="copy_hsl">copy hsl</button></div>
         <div class="p_color_box">
             <span>${hsl}</span>
         </div>
-        <div class="cp_btn_container"> <button type="button" class="pick_button" id="copy_rgba">copy hex</button></div>
+        <div class="cp_btn_container"> <button type="button" class="pick_button" id="copy_hex">copy hex</button></div>
         <div class="p_color_box">
             <span>${hex}</span>
         </div>
@@ -179,11 +179,55 @@ function toggleColorModal(e){
         </div>
     </div>`;
     document.body.appendChild(div);
+    const popup = document.querySelector(".popup");
+    const copy_rgb = document.querySelector("#copy_rgb");
+    const copy_hsl = document.querySelector("#copy_hsl");
+    const copy_hex = document.querySelector("#copy_hex");
+
+    copy_hex.addEventListener("click",(e)=>{
+        const color_code = e.target.parentElement.nextElementSibling.firstElementChild.textContent;
+        e.target.textContent = "Copied"
+        setTimeout(() => {
+            e.target.textContent = "copy hex"
+        }, 1000);
+        // e.target.textContent = "copped"
+        navigator.clipboard.writeText(color_code);
+    });
+    copy_rgb.addEventListener("click",(e)=>{
+        const color_code = e.target.parentElement.nextElementSibling.firstElementChild.textContent;
+        navigator.clipboard.writeText(color_code);
+         e.target.textContent = "Copied"
+        setTimeout(() => {
+            e.target.textContent = "copy hex"
+        }, 1000);
+    });
+    copy_hsl.addEventListener("click",(e)=>{
+        const color_code = e.target.parentElement.nextElementSibling.firstElementChild.textContent;
+        navigator.clipboard.writeText(color_code);
+         e.target.textContent = "Copied"
+        setTimeout(() => {
+            e.target.textContent = "copy hex"
+        }, 1000);
+    })
+
+
+    // for animation
+    setTimeout(()=>{
+        popup.style.opacity = "1";
+        popup.style.top = "50%";
+    },10);
+
     const closeBtn = document.querySelector(".close");
     closeBtn.addEventListener("click",()=>{
-        document.body.removeChild(div);
+        popup.style.opacity = "0";
+        popup.style.top = "45%";
+        setTimeout(() => {
+            document.body.removeChild(div);
+        }, 200);
         // console.log("delete3")
-    })
+    });
+
+
 }
 
 

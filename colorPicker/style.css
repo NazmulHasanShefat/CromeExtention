@@ -46,14 +46,15 @@ body {
     height: 50px;
     display: flex;
     justify-content: center;
+    padding: 5px;
     align-items: center;
     flex-direction: column;
-    background-color: rgb(250, 250, 250);
+    background-color: rgb(223, 221, 221);
     cursor: pointer;
     position: relative;
 
     &:hover {
-        background-color: rgb(219, 219, 219);
+        background-color: rgb(185, 185, 185);
     }
 }
 
@@ -128,7 +129,9 @@ body {
     background-color: rgb(255, 255, 255);
     position: fixed;
     left: 50%;
-    top: 50%;
+    top: 45%;
+    opacity: 0;
+    transition: all .3s;
     padding: 20px;
     transform: translate(-50%, -50%);
     border-radius: 5px;
@@ -186,7 +189,7 @@ body {
     cursor: pointer;
 }
 
-#copy_rgba,
+#copy_rgb,
 #copy_hex,
 #copy_hsl {
     font-size: .5rem;
