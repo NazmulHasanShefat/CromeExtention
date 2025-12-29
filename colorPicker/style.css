@@ -3,36 +3,70 @@
     margin: 0;
     padding: 0;
 }
-
-body {
+:root{
+    --background: rgb(255, 255, 255);
+    --color: #000000;
+}
+body,html {
     font-family: "Roboto", sans-serif;
     font-weight: 500;
+    color: var(--color);
 }
+
 /* navigation */
-#select_mood{
-    border:none;
+hr {
+    border: none;
+    height: 1px;
+    background-color: rgba(185, 185, 185, 0.904);
+    margin-bottom: 4px;
+}
+#nav_plusIcon{
+    transition: all .3s ease-in-out;
+    &:hover{
+        transform: scale(1.2);
+    }
+}
+.setting_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+    &:hover{
+        transform: rotate(90deg);
+    }
+}
+
+.navigationPanal {
+    padding: 4px 0;
+}
+
+#select_mood {
+    border: none;
     outline: none;
 }
-.clearAllBtn{
+
+.clearAllBtn {
     text-decoration: underline;
     cursor: pointer;
-    &:hover{
+
+    &:hover {
         color: red;
     }
 }
+
 /* navigation */
 .wraper {
     width: 99%;
-    height: 90%;
-    background-color: #fff;
-    border-radius: 10px;
+    height: 100%;
+    background-color: var(--background);
     overflow-y: auto;
 }
 
 .card {
     width: 99%;
     height: max-content;
-    background-color: #fff;
+    background-color: var(--background);
     padding: 10px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -57,7 +91,7 @@ body {
         background-color: rgb(185, 185, 185);
     }
 }
-
+.pickColor_container{width: 100%; height: max-content; background-color: var(--background);}
 .folder-icon-container {
     margin-top: 5px;
     width: 80%;
@@ -148,18 +182,21 @@ body {
     background-color: #4646469f;
     z-index: 5;
 }
-.cp_btn_container{
+
+.cp_btn_container {
     display: flex;
     justify-content: end;
     padding: 20px 0 0 0;
 
 }
-.dt_btn_container{
+
+.dt_btn_container {
     display: flex;
     justify-content: end;
     padding: 10px 0 0 0;
 
 }
+
 .p_color_box {
     padding: 6px 9px;
     margin: 5px 0;
@@ -193,7 +230,7 @@ body {
 #copy_hex,
 #copy_hsl {
     font-size: .5rem;
-    margin:0;
+    margin: 0;
 }
 
 .close_folder {
