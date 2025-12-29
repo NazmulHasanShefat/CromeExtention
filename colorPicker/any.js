@@ -164,3 +164,20 @@ myli.forEach(targetli =>{
     })
     
 })
+
+
+
+
+
+
+
+//backup
+function removeSingleColor(e){
+    const targetColor = parseInt(e.target.getAttribute("data-delete"));
+    const itemIndex = myColor.findIndex(item =>{item.id === targetColor});
+    if(itemIndex > -1){
+        myColor.splice(itemIndex,1);
+        console.log(itemIndex)
+        updateLocalStorage()
+    }
+}

@@ -133,11 +133,22 @@ body {
     background-color: #4646469f;
     z-index: 5;
 }
+.cp_btn_container{
+    display: flex;
+    justify-content: end;
+    padding: 20px 0 0 0;
 
+}
+.dt_btn_container{
+    display: flex;
+    justify-content: end;
+    padding: 10px 0 0 0;
+
+}
 .p_color_box {
-    padding: 4px 10px;
+    padding: 6px 9px;
     margin: 5px 0;
-    background-color: #f1f1f1;
+    background-color: #dbdbdb;
     font-weight: 600;
     border-radius: 4px;
     font-family: "JetBrains Mono", monospace;
@@ -156,9 +167,8 @@ body {
     background-color: red;
     color: #fff;
     padding: 4px 8px;
-    font-size: .6rem;
+    font-size: .9rem;
     border-radius: 4px;
-    position: absolute;
     right: 10px;
     bottom: 10px;
     cursor: pointer;
@@ -168,6 +178,7 @@ body {
 #copy_hex,
 #copy_hsl {
     font-size: .5rem;
+    margin:0;
 }
 
 .close_folder {

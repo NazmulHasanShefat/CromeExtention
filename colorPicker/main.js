@@ -124,22 +124,28 @@ function renderUIcolor(){
     
 }
 
-function removeSingleColor(e){
-    const targetColor = e.target.getAttribute("data-delete");
-    const itemIndex = myColor.findIndex((item)=>{item.id === targetColor});
+// remove color from local storage
+function removeSingleColor(e) {
+    const targetColor = parseInt(e.target.dataset.delete);
+    console.log(targetColor)
+    const itemIndex = myColor.findIndex(
+        item => item.id === targetColor
+    );
 
-    if(itemIndex > -1){
-        myColor.splice(itemIndex,1);
-        updateLocalStorage()
-        console.log("hello")
+    if (itemIndex > -1) {
+        myColor.splice(itemIndex, 1);
+        updateLocalStorage();
+        renderUIcolor()
     }
-    updateLocalStorage()
-    
-
 }
+
+
+
 
 // save color on local storage
 function updateLocalStorage(){
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(myColor))
 }
+
+
 renderUIcolor();
