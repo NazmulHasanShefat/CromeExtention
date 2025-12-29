@@ -91,7 +91,7 @@ hr {
         background-color: rgb(185, 185, 185);
     }
 }
-.pickColor_container{width: 100%; height: max-content; background-color: var(--background);}
+.pickColor_container{width: 100%; height: max-content; background-color: var(--background); padding: 10px 0 5px 0}
 .folder-icon-container {
     margin-top: 5px;
     width: 80%;

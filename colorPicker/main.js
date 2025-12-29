@@ -22,6 +22,7 @@ pickColor.addEventListener("click", () => {
     }
 })
 
+
 //activate idroper
 const activateEyeDroper = async () => {
     try {
@@ -91,8 +92,8 @@ function hexToHsl(hex) {
 }
 
 //display as folder all colors
+const container = document.querySelector(".card");
 function renderUIcolor() {
-    const container = document.querySelector(".card");
     container.innerHTML = "";
     myColor.forEach(color => {
         let colorPalet = document.createElement("div");
@@ -144,6 +145,16 @@ function removeSingleColor(e) {
         renderUIcolor()
     }
 }
+//remove all color
+let clearAllBtn = document.querySelector(".clearAllBtn");
+clearAllBtn.addEventListener("click", () => {
+    localStorage.removeItem(LOCAL_STORAGE_KEY);
+    // renderUIcolor();
+    const myColor = [];
+    container.innerHTML = ""
+})
+
+
 
 // toggle colors modal
 function toggleColorModal(e) {
