@@ -3,11 +3,14 @@
     margin: 0;
     padding: 0;
 }
-:root{
+
+:root {
     --background: rgb(255, 255, 255);
     --color: #000000;
 }
-body,html {
+
+body,
+html {
     font-family: "Roboto", sans-serif;
     font-weight: 500;
     color: var(--color);
@@ -20,19 +23,56 @@ hr {
     background-color: rgba(185, 185, 185, 0.904);
     margin-bottom: 4px;
 }
-#nav_plusIcon{
+/* with plus icon */
+.plus_container{
+    position: relative;
+}
+#nav_plusIcon {
     transition: all .3s ease-in-out;
-    &:hover{
-        transform: scale(1.2);
+    background: linear-gradient(90deg, #ff0080, #7928ca);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    &:hover {
+        transform: scale(1.2) rotate(90deg);
     }
 }
+/* menus list */
+.menus_list{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) scale(0);
+    width: max-content;
+    padding: 5px;
+    height: max-content;
+    top:25px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    z-index: 99;
+    transition:.3s ease-in-out;
+    transform-origin: top center;
+    li{
+        padding: 3px 8px;
+        cursor: pointer;
+        list-style: none;
+        &:hover{
+            background-color: #e6e6e6;
+        }
+    }
+}
+.active_plus_menus{
+    transform: translateX(-50%) scale(1);
+}
+
+/* with plus icon */
+
 .setting_container {
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     transition: all .3s ease-in-out;
-    &:hover{
+
+    &:hover {
         transform: rotate(90deg);
     }
 }
@@ -91,7 +131,17 @@ hr {
         background-color: rgb(185, 185, 185);
     }
 }
-.pickColor_container{width: 100%; height: max-content; background-color: var(--background); padding: 10px 0 5px 0}
+.folder_name{
+    font-family: "JetBrains Mono", monospace ;
+}
+
+.pickColor_container {
+    width: 100%;
+    height: max-content;
+    background-color: var(--background);
+    padding: 10px 0 5px 0;
+}
+
 .folder-icon-container {
     margin-top: 5px;
     width: 80%;
@@ -122,6 +172,11 @@ hr {
     font-family: "JetBrains Mono", monospace;
     color: #fff;
     gap: 5px;
+    transition: all .3s ease-in-out;
+    z-index: 9999 !important;
+    &:hover{
+        scale: 1.2;
+    }
 
     &::before {
         position: absolute;
@@ -129,7 +184,7 @@ hr {
         left: 50%;
         top: 50%;
         /* background: #ff0000; */
-        background: linear-gradient(90deg, rgba(255, 0, 0, 1) 0%, rgba(208, 0, 255, 1) 50%, rgba(69, 87, 252, 1) 100%);
+        background: linear-gradient(45deg, rgba(255, 0, 0, 1) 0%, rgba(208, 0, 255, 1) 50%, rgba(69, 87, 252, 1), rgb(252, 69, 145) 100%);
         height: 100%;
         background-size: 500px;
         background-position: 0;
@@ -149,7 +204,7 @@ hr {
     }
 
     50% {
-        background-position: 500px;
+        background-position: -350px;
     }
 
     100% {
@@ -246,6 +301,51 @@ hr {
     &:hover {
         svg path {
             fill: rgb(255, 0, 0);
+        }
+    }
+}
+
+/* settings panal  */
+.settings_panal{
+    position: absolute;
+    left: 50%;
+    top: 45%;
+    transform: translate(-50%,-50%);
+    height: 300px;
+    width: 90%;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    z-index: 99999;
+    .seting_options{
+        padding: 10px;
+    }
+    h1{
+        text-align: center;
+        font-size: 1rem;
+        padding: 10px 0;
+    }
+    label{
+        display: flex;
+        justify-content: space-between;
+        margin: 13px 0;
+        color:rgb(122, 122, 122);
+    }
+    .settings_btn{
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        button{
+            cursor: pointer;
+            border: none;
+            outline: none;
+            background-color: rgb(0, 105, 204);
+            color:#fff;
+            border-radius: 6px;
+            padding: 5px 8px;
+        }
+        #closeSettings{
+            margin-right: 8px;
+            background-color: rgb(219, 1, 1);
         }
     }
 }

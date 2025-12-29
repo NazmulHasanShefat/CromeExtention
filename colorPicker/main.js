@@ -1,3 +1,8 @@
+// required functionality pick color outside the browser and picked color history gradient generator
+// settings functions
+//Automatically copy picked color to clipboard.
+//Color Format	 Show Hex codes in lowercase.
+// Keyboard Shortcuts	 Enable color picking from page using keyboard shortcut.
 const close = document.querySelector(".close");
 const popup = document.querySelector(".popup");
 const drop_shadow = document.querySelector(".drop_shadow");
@@ -7,7 +12,24 @@ const copy_hsl = document.querySelector("#copy_hsl");
 const folder = document.querySelector(".folder");
 const pickColor = document.querySelector("#pickColor");
 const LOCAL_STORAGE_KEY = "pickedColor";
-const myColor = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || [];
+let myColor = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || [];
+
+//menus and submenus
+const menus_list = document.querySelector(".menus_list");
+const nav_plusIcon = document.querySelector("#nav_plusIcon")
+
+nav_plusIcon.addEventListener("click", (e) => {
+    e.stopPropagation()
+    menus_list.classList.toggle("active_plus_menus")
+    document.body.addEventListener("click", () => {
+        menus_list.classList.remove("active_plus_menus")
+    })
+})
+//open settings
+
+
+//menus and submenus
+
 
 //pick color action
 pickColor.addEventListener("click", () => {
@@ -21,7 +43,6 @@ pickColor.addEventListener("click", () => {
         console.log("faild to pick color");
     }
 })
-
 
 //activate idroper
 const activateEyeDroper = async () => {
@@ -109,7 +130,7 @@ function renderUIcolor() {
                 <div class="folder-icon-container" style="pointer-events: none;">
                     <div class="main-icon" style="background-color: ${color.hexColor}; pointer-events: none;"></div>
                 </div>
-                <p style="font-size: .5rem; margin:0; pointer-events: none;">${color.hexColor}</p>
+                <p style="font-size: .55rem; margin:0; pointer-events: none;" class="folder_name">${color.hexColor}</p>
             </div>
         `;
         container.appendChild(colorPalet)
@@ -148,13 +169,12 @@ function removeSingleColor(e) {
 //remove all color
 let clearAllBtn = document.querySelector(".clearAllBtn");
 clearAllBtn.addEventListener("click", () => {
+    myColor = [];
+    container.innerHTML = ""
     localStorage.removeItem(LOCAL_STORAGE_KEY);
     // renderUIcolor();
-    const myColor = [];
-    container.innerHTML = ""
+    // renderUIcolor();
 })
-
-
 
 // toggle colors modal
 function toggleColorModal(e) {
@@ -173,15 +193,15 @@ function toggleColorModal(e) {
                         fill="#0F1729" />
                 </svg>
             </div>
-            <div class="cp_btn_container"> <button type="button" class="pick_button" id="copy_rgb">copy rgba</button></div>
+            <div class="cp_btn_container"> <button type="button" class="pick_button" id="copy_rgb">Copy rgba</button></div>
             <div class="p_color_box">
                 <span>${rgb}</span>
             </div>
-            <div class="cp_btn_container"> <button type="button" class="pick_button" id="copy_hsl">copy hsl</button></div>
+            <div class="cp_btn_container"> <button type="button" class="pick_button" id="copy_hsl">Copy hsl</button></div>
             <div class="p_color_box">
                 <span>${hsl}</span>
             </div>
-            <div class="cp_btn_container"> <button type="button" class="pick_button" id="copy_hex">copy hex</button></div>
+            <div class="cp_btn_container"> <button type="button" class="pick_button" id="copy_hex">Copy hex</button></div>
             <div class="p_color_box">
                 <span>${hex}</span>
             </div>
@@ -201,7 +221,7 @@ function toggleColorModal(e) {
         const color_code = e.target.parentElement.nextElementSibling.firstElementChild.textContent;
         e.target.textContent = "Copied"
         setTimeout(() => {
-            e.target.textContent = "copy hex"
+            e.target.textContent = "Copy hex"
         }, 1000);
         // e.target.textContent = "copped"
         navigator.clipboard.writeText(color_code);
@@ -211,7 +231,7 @@ function toggleColorModal(e) {
         navigator.clipboard.writeText(color_code);
         e.target.textContent = "Copied"
         setTimeout(() => {
-            e.target.textContent = "copy hex"
+            e.target.textContent = "Copy hex"
         }, 1000);
     });
     copy_hsl.addEventListener("click", (e) => {
@@ -219,7 +239,7 @@ function toggleColorModal(e) {
         navigator.clipboard.writeText(color_code);
         e.target.textContent = "Copied"
         setTimeout(() => {
-            e.target.textContent = "copy hex"
+            e.target.textContent = "Copy hex"
         }, 1000);
     })
 
@@ -244,6 +264,7 @@ function toggleColorModal(e) {
 
 
 }
+
 
 
 // save color on local storage
