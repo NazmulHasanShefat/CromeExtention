@@ -8,7 +8,19 @@ body {
     font-family: "Roboto", sans-serif;
     font-weight: 500;
 }
-
+/* navigation */
+#select_mood{
+    border:none;
+    outline: none;
+}
+.clearAllBtn{
+    text-decoration: underline;
+    cursor: pointer;
+    &:hover{
+        color: red;
+    }
+}
+/* navigation */
 .wraper {
     width: 99%;
     height: 90%;
