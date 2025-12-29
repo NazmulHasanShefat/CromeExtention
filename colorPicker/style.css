@@ -123,7 +123,7 @@ hr {
     padding: 5px;
     align-items: center;
     flex-direction: column;
-    background-color: rgb(223, 221, 221);
+    background-color: #f0f4f9;
     cursor: pointer;
     position: relative;
 
@@ -309,7 +309,9 @@ hr {
 .settings_panal{
     position: absolute;
     left: 50%;
-    top: 45%;
+    top: 40%;
+    opacity: 0;
+    transition: all .3s ease-in-out;
     transform: translate(-50%,-50%);
     height: 300px;
     width: 90%;

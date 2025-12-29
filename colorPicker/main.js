@@ -26,7 +26,71 @@ nav_plusIcon.addEventListener("click", (e) => {
     })
 })
 //open settings
-
+const setting_container = document.querySelector(".setting_container");
+setting_container.addEventListener("click",()=>{
+    let div = document.createElement("div");
+    div.innerHTML = `
+    <div class="drop_shadow"></div>
+    <div class="settings_panal">
+        <h1>color picker options</h1>
+        <hr>
+        <div class="seting_options">
+            <div class="setting_1">
+                <label for="clipBord_colorFormate">
+                <p>Automatically copy picked color to clipboard.</p>
+                <input type="checkbox" name="clipbordColorFormate" id="clipBord_colorFormate">
+                </label>
+            </div>
+            <div class="setting_1">
+                <label for="showLowerCase">
+                <p>Show Hex codes in lowercase.</p>
+                <input type="checkbox" name="clipbordColorFormate" id="showLowerCase">
+                </label>
+            </div>
+            <div class="setting_1">
+                <label for="enableKyeShotCut">
+                <p>Enable color picking from page using keyboard shortcut Press <br> <kbd>Ctrl</kbd> + <kbd>Z</kbd></p>
+                <input type="checkbox" name="clipbordColorFormate" id="enableKyeShotCut">
+                </label>
+            </div>
+            <div class="setting_1">
+                <label for="darkMood">
+                <p>Dark mood</p>
+                <input type="checkbox" name="clipbordColorFormate" id="darkMood">
+                </label>
+            </div>
+        </div>
+        <div class="settings_btn">
+            <button type="button" id="closeSettings">Close</button>
+            <button type="button" id="saveSettings">Save</button>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(div);
+    const settings_panal = document.querySelector(".settings_panal");
+    setTimeout(() => {
+        settings_panal.style.top = "45%";
+        settings_panal.style.opacity = "1";
+    }, 10);
+    
+    const backDrop = document.querySelector(".drop_shadow");
+    const closeSettings = document.querySelector("#closeSettings");
+    
+    backDrop.addEventListener("click",()=>{
+         settings_panal.style.top = "40%";
+        settings_panal.style.opacity = "0";
+        setTimeout(() => {
+            document.body.removeChild(div);
+        }, 300);
+    })
+    closeSettings.addEventListener("click",()=>{
+       settings_panal.style.top = "40%";
+        settings_panal.style.opacity = "0";
+        setTimeout(() => {
+            document.body.removeChild(div);
+        }, 300);
+    })
+})
 
 //menus and submenus
 
