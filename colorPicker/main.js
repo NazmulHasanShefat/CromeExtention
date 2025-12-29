@@ -97,7 +97,7 @@ function renderUIcolor(){
     myColor.forEach(color => {
         let colorPalet = document.createElement("div");
         colorPalet.innerHTML = `
-          <div class="folder">
+          <div class="folder" data-hex="${color.hexColor}" data-rgb="${color.rgbColor}" data-hsl="${color.hslColor}">
                 <div class="close_folder" data-delete="${color.id}">
                      <svg style="pointer-events: none;" xmlns="http://www.w3.org/2000/svg" width="12px" height="12px" viewBox="0 0 24 24"
                         fill="none">
@@ -105,8 +105,8 @@ function renderUIcolor(){
                             d="M5.29289 5.29289C5.68342 4.90237 6.31658 4.90237 6.70711 5.29289L12 10.5858L17.2929 5.29289C17.6834 4.90237 18.3166 4.90237 18.7071 5.29289C19.0976 5.68342 19.0976 6.31658 18.7071 6.70711L13.4142 12L18.7071 17.2929C19.0976 17.6834 19.0976 18.3166 18.7071 18.7071C18.3166 19.0976 17.6834 19.0976 17.2929 18.7071L12 13.4142L6.70711 18.7071C6.31658 19.0976 5.68342 19.0976 5.29289 18.7071C4.90237 18.3166 4.90237 17.6834 5.29289 17.2929L10.5858 12L5.29289 6.70711C4.90237 6.31658 4.90237 5.68342 5.29289 5.29289Z" />
                     </svg>
                 </div>
-                <div class="folder-icon-container">
-                    <div class="main-icon" style="background-color: ${color.hexColor};"></div>
+                <div class="folder-icon-container" style="pointer-events: none;">
+                    <div class="main-icon" style="background-color: ${color.hexColor}; pointer-events: none;"></div>
                 </div>
                 <p style="font-size: .5rem; margin:0;">${color.hexColor}</p>
             </div>
@@ -115,12 +115,17 @@ function renderUIcolor(){
     });
     //delete single color action
     const close_folder = document.querySelectorAll(".close_folder");
-
+    const folder = document.querySelectorAll(".folder");
     close_folder.forEach(delete_btn => {
         delete_btn.addEventListener("click",(e)=>{
             removeSingleColor(e)
         })
     });
+    folder.forEach(openFolder => {
+        openFolder.addEventListener("click", (e)=>{
+            toggleColorModal(e)
+        })
+    })
     
 }
 
@@ -139,7 +144,47 @@ function removeSingleColor(e) {
     }
 }
 
-
+// toggle colors modal
+function toggleColorModal(e){
+    const rgb = e.target.dataset.rgb;
+    const hsl = e.target.dataset.hsl;
+    const hex = e.target.dataset.hex;
+    console.log(rgb);
+    const div = document.createElement("div")
+    div.innerHTML = `<div class="drop_shadow"></div>
+    <div class="popup">
+        <div class="close">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M5.29289 5.29289C5.68342 4.90237 6.31658 4.90237 6.70711 5.29289L12 10.5858L17.2929 5.29289C17.6834 4.90237 18.3166 4.90237 18.7071 5.29289C19.0976 5.68342 19.0976 6.31658 18.7071 6.70711L13.4142 12L18.7071 17.2929C19.0976 17.6834 19.0976 18.3166 18.7071 18.7071C18.3166 19.0976 17.6834 19.0976 17.2929 18.7071L12 13.4142L6.70711 18.7071C6.31658 19.0976 5.68342 19.0976 5.29289 18.7071C4.90237 18.3166 4.90237 17.6834 5.29289 17.2929L10.5858 12L5.29289 6.70711C4.90237 6.31658 4.90237 5.68342 5.29289 5.29289Z"
+                    fill="#0F1729" />
+            </svg>
+        </div>
+        <div class="cp_btn_container"> <button type="button" class="pick_button" id="copy_rgba">copy rgba</button></div>
+        <div class="p_color_box">
+            <span>${rgb}</span>
+        </div>
+        <div class="cp_btn_container"> <button type="button" class="pick_button" id="copy_rgba">copy hsl</button></div>
+        <div class="p_color_box">
+            <span>${hsl}</span>
+        </div>
+        <div class="cp_btn_container"> <button type="button" class="pick_button" id="copy_rgba">copy hex</button></div>
+        <div class="p_color_box">
+            <span>${hex}</span>
+        </div>
+        <div class="dt_btn_container">
+            <button type="button" class="btn_delete" id="delete">
+                delete
+            </button>
+        </div>
+    </div>`;
+    document.body.appendChild(div);
+    const closeBtn = document.querySelector(".close");
+    closeBtn.addEventListener("click",()=>{
+        document.body.removeChild(div);
+        // console.log("delete3")
+    })
+}
 
 
 // save color on local storage
