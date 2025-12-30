@@ -2,6 +2,8 @@ import { AlertMassage } from "./main.js"
 const createNewTab_button = document.getElementById("createNewTab_button");
 const LOCAL_STORAGE_KEY_CREATE_TAB = "myTabs";
 let myTabName = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY_CREATE_TAB)) || [];
+
+//============================  tab creatation and some oparetions ===================================
 createNewTab_button.addEventListener("click", () => {
     const divCreateNewTab = document.createElement("div");
     divCreateNewTab.innerHTML = `
@@ -80,6 +82,7 @@ function updateLoalStorage() {
     localStorage.setItem(LOCAL_STORAGE_KEY_CREATE_TAB, JSON.stringify(myTabName));
 }
 
+// ==================================== tab list oparetions =============================================
 const tablist_UI = document.querySelector(".tablist");
 function renderTabListUI() {
     tablist_UI.innerHTML = "";
@@ -87,7 +90,7 @@ function renderTabListUI() {
         let divTabItem = document.createElement("div")
         divTabItem.innerHTML = `
           <div class="tabItem">
-                        <div class="tabContent">
+                        <div class="tabContent" data-selected-tab="${tabNames.tabName}">
                            ${tabNames.tabName}
                         </div>
                         <div class="tabControlers">
@@ -110,16 +113,34 @@ function renderTabListUI() {
                     </div>
         `;
         tablist_UI.appendChild(divTabItem);
-        // delete tab ===================
+        //=========================================== delete tab =============================================
         const tab_delete_icon = document.querySelectorAll(".tab_delete_icon");
         tab_delete_icon.forEach(deleteSingleTab => {
             deleteSingleTab.addEventListener("click", (e) => {
-                e.stopPropagation();
-                const dataid = e.target.dataset.tabId;
-                deleteTab(dataid)
+                    const dataid = e.target.dataset.tabId;
+                    deleteTab(dataid)
             })
         })
-        //=========================
+        //=====================================================================================================
+
+        //====================================== Tab select Status ==========================================
+        const selected_tab_nameElement = document.querySelector("#selected_tab_name");
+        const tabItem = document.querySelectorAll(".tabContent");
+        const tabItemTB = document.querySelectorAll(".tabItem");
+        
+        tabItem.forEach(tabitemName => {
+            tabitemName.addEventListener("click",(e)=>{
+                const selectedTabName = e.target.dataset.selectedTab;
+                selected_tab_nameElement.innerText = selectedTabName;
+                tabItemTB.forEach(myTB=>{
+                    if(myTB.classList.contains("activeCurrentTab")){
+                        myTB.classList.remove("activeCurrentTab");
+                    }
+                    e.target.parentElement.classList.add("activeCurrentTab");
+                })
+            })
+        })
+        //============================================= end ==============================================
 
     });
 }
@@ -138,3 +159,4 @@ function deleteTab(e) {
         renderTabListUI();
     }
 }
+

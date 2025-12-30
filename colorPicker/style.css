@@ -382,10 +382,13 @@ hr {
 /* switch tab function ui */
 .switch_tab {
     position: relative;
-
     .currentTab {
         padding: 4px 10px;
         cursor: pointer;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
 
         p {
             transition: all .3s ease-in-out;
@@ -536,3 +539,7 @@ hr {
     padding: 4px 10px;
     transform: translate(-50%, -50%);
 }
+
+/* for js */
+.activeCurrentTab{background-color: #dadada;}
+/* for js */
