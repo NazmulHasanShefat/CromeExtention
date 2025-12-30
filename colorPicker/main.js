@@ -14,18 +14,6 @@ const pickColor = document.querySelector("#pickColor");
 const LOCAL_STORAGE_KEY = "pickedColor";
 let myColor = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || [];
 
-//menus and submenus
-const menus_list = document.querySelector(".menus_list");
-const nav_plusIcon = document.querySelector("#nav_plusIcon")
-
-nav_plusIcon.addEventListener("click", (e) => {
-    e.stopPropagation()
-    menus_list.classList.toggle("active_plus_menus")
-    document.body.addEventListener("click", () => {
-        menus_list.classList.remove("active_plus_menus")
-    })
-})
-//open settings
 const setting_container = document.querySelector(".setting_container");
 setting_container.addEventListener("click", () => {
     let div = document.createElement("div");
@@ -91,21 +79,6 @@ setting_container.addEventListener("click", () => {
         }, 300);
     })
 })
-//open tabs
-const currentTab = document.querySelector(".currentTab");
-const tablist = document.querySelector(".tablist");
-currentTab.addEventListener("click", (e) => {
-    e.stopPropagation();
-    tablist.classList.toggle("active_tabsMenu")
-
-    document.body.addEventListener("click", () => {
-        tablist.classList.toggle("active_tabsMenu")
-    })
-})
-
-//menus and submenus
-
-
 //pick color action
 pickColor.addEventListener("click", () => {
     try {
