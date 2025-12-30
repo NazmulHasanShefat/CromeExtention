@@ -59,7 +59,12 @@ hr {
         padding: 3px 8px;
         cursor: pointer;
         list-style: none;
-        a{text-decoration: none; color: var(--color); display: block;}
+
+        a {
+            text-decoration: none;
+            color: var(--color);
+            display: block;
+        }
 
         &:hover {
             background-color: #e6e6e6;
@@ -402,19 +407,48 @@ hr {
         background-color: #fff;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         height: max-content;
-        width: max-content;
+        width: 140px;
         padding: 7px;
         border-radius: 6px;
         z-index: 999;
         transition: all .3s ease-in-out;
-        transform-origin:top center;
-        li {
+        transform-origin: top center;
+        .tabItem {
+            width: 100%;
+            height: max-content;
             padding: 4px 10px;
+            color: var(--color);
             cursor: pointer;
-            list-style: none;
-
+            position: relative;
             &:hover {
-                background-color: #d6d6d6;
+                background-color: rgb(214, 214, 214);
+            }
+
+            .tabContent {
+                cursor: pointer;
+                width: 100%;
+                display: -webkit-box;
+                -webkit-line-clamp: 1;
+                /* Number of lines to show */
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                color: var(--color);
+            }
+            .tabControlers{
+                position: absolute;
+                right: 0;
+                top: 0px;
+                display: flex;
+                gap:3px;
+                .delete_tab{
+                    background: linear-gradient(90deg, #ff0080, #7928ca);
+                    border-radius: 50%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 3px;
+                    svg path{fill:#fff}
+                }
             }
         }
     }
@@ -425,7 +459,7 @@ hr {
 }
 
 /* create tab box */
-.createTab_container{
+.createTab_container {
     width: 80%;
     height: 150px;
     background-color: #ffffff;
@@ -434,30 +468,35 @@ hr {
     border-radius: 6px;
     left: 50%;
     top: 30%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     padding: 8px 20px;
-    h3{
+
+    h3 {
         padding: 30px 0 5px 0;
     }
-    #tabNameInput{
+
+    #tabNameInput {
         outline: none;
         width: 100%;
         height: 30px;
         border: 1px solid rgb(255, 53, 204);
         border-radius: 6px;
         padding: 4px 8px;
-        &:focus{
+
+        &:focus {
             border: 1px solid rgb(141, 42, 255);
         }
     }
-    .buttons_createTab{
+
+    .buttons_createTab {
         display: flex;
         justify-content: end;
         align-items: center;
         padding: 20px 0;
         gap: 5px;
     }
-    .close_create_tab{
+
+    .close_create_tab {
         position: absolute;
         right: 10px;
         cursor: pointer;
