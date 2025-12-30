@@ -436,10 +436,15 @@ hr {
             }
             .tabControlers{
                 position: absolute;
-                right: 0;
-                top: 0px;
-                display: flex;
-                gap:3px;
+                right: -30px;
+                border-radius: 6px;
+                top: -8px;
+                border: 1px solid #ff0080;
+                background-color: #fff;
+                padding: 0px 5px;
+                /* display: flex; */
+                /* gap:3px; */
+                display: none;
                 .delete_tab{
                     background: linear-gradient(90deg, #ff0080, #7928ca);
                     border-radius: 50%;
@@ -447,12 +452,15 @@ hr {
                     justify-content: center;
                     align-items: center;
                     padding: 3px;
+                    margin: 8px 0;
                     svg path{fill:#fff}
                 }
             }
+            
         }
     }
-
+    .tabItem:hover > .tabControlers{display: block;}
+    
     .active_tabsMenu {
         transform: translate(-50%) scale(1);
     }
