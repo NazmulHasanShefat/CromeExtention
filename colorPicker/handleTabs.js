@@ -1,5 +1,6 @@
 const createNewTab_button = document.getElementById("createNewTab_button");
-
+const LOCAL_STORAGE_KEY_CREATE_TAB = "myTabs";
+let myTabName = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY_CREATE_TAB)) || [];
 createNewTab_button.addEventListener("click",()=>{
     const divCreateNewTab = document.createElement("div");
     divCreateNewTab.innerHTML = `
@@ -18,14 +19,19 @@ createNewTab_button.addEventListener("click",()=>{
         </div>
         <div class="buttons_createTab">
             <button type="button" class="btn_close">Close</button>
-            <button type="button" class="btn_success">Create</button>
+            <button type="button" class="btn_success" id="setTabName">Create</button>
         </div>
     </div>
     `;
     document.body.appendChild(divCreateNewTab);
     const tabNameInput = document.querySelector("#tabNameInput");
     tabNameInput.value = "New tab 2";
-    
+    const setTabName = document.querySelector("#setTabName");
+    setTabName.addEventListener("click",()=>{
+        setLocalStorageNewTab(tabNameInput.value);
+    })
+
+    //close tab functions
     const btn_close = document.querySelector(".btn_close");
     const close_create_tab = document.querySelector(".close_create_tab");
     close_create_tab.addEventListener("click",()=>{
@@ -34,4 +40,26 @@ createNewTab_button.addEventListener("click",()=>{
     btn_close.addEventListener("click",()=>{
         document.body.removeChild(divCreateNewTab);
     })
-})
+});
+
+function setLocalStorageNewTab(tabname){
+    if(tabname.length > 1){
+        myTabName.push({
+            id: myTabName.length,
+            tabName: tabname,
+        })
+        // check duplicate tabs
+        // myTabName.forEach(tabs => {});
+        console.log(tabname);
+        updateLoalStorage();
+    }
+}
+
+// function renderUI_tabName(){
+// }
+// function deleteTab(){}
+// rename tab
+
+function updateLoalStorage(){
+    localStorage.setItem(LOCAL_STORAGE_KEY_CREATE_TAB, JSON.stringify(myTabName));
+}
