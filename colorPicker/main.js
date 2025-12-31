@@ -13,6 +13,8 @@ const folder = document.querySelector(".folder");
 const pickColor = document.querySelector("#pickColor");
 const LOCAL_STORAGE_KEY = "pickedColor";
 let myColor = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || [];
+import myTabName from "./handleTabs.js"
+console.log(myTabName)
 
 const setting_container = document.querySelector(".setting_container");
 setting_container.addEventListener("click", () => {
@@ -83,7 +85,50 @@ setting_container.addEventListener("click", () => {
 pickColor.addEventListener("click", () => {
     try {
         if (window.EyeDropper) {
-            activateEyeDroper();
+            if (myTabName.length > 1) {
+                const selectTabPickerElement = document.createElement("div");
+                const dropShadowElement = document.createElement("div");
+                dropShadowElement.setAttribute("class", "drop_shadow")
+                selectTabPickerElement.setAttribute("class", "tabSelectionModal");
+                selectTabPickerElement.innerHTML = `
+                  <div class="closeSelection_modal">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M5.29289 5.29289C5.68342 4.90237 6.31658 4.90237 6.70711 5.29289L12 10.5858L17.2929 5.29289C17.6834 4.90237 18.3166 4.90237 18.7071 5.29289C19.0976 5.68342 19.0976 6.31658 18.7071 6.70711L13.4142 12L18.7071 17.2929C19.0976 17.6834 19.0976 18.3166 18.7071 18.7071C18.3166 19.0976 17.6834 19.0976 17.2929 18.7071L12 13.4142L6.70711 18.7071C6.31658 19.0976 5.68342 19.0976 5.29289 18.7071C4.90237 18.3166 4.90237 17.6834 5.29289 17.2929L10.5858 12L5.29289 6.70711C4.90237 6.31658 4.90237 5.68342 5.29289 5.29289Z"
+                    fill="#0F1729" />
+            </svg>
+        </div>
+
+        <div class="selectable_tabTitle">
+            <div class="selectable_tabTitleName">Select your tab</div>
+        </div>
+        <div class="selectable_tablist">
+        </div>
+        `;
+
+
+                document.body.appendChild(dropShadowElement);
+                document.body.appendChild(selectTabPickerElement);
+
+                const closeSelection_modal = document.querySelector(".closeSelection_modal");
+                closeSelection_modal.addEventListener("click", () => {
+                    document.body.removeChild(dropShadowElement)
+                    document.body.removeChild(selectTabPickerElement);
+                })
+                const selectable_tablist = document.querySelector(".selectable_tablist");
+                function STB(){
+                    myTabName.forEach(tabs=>{
+                        selectable_tablist.innerHTML += `
+                        <div class="selectable_tabItem">${tabs.tabName}</div>
+                        `;;
+                    })
+                }
+                STB();
+
+
+            } else {
+                activateEyeDroper();
+            }
         } else {
             alert("eyedropper not support your browser please try on Google Chrome or microsoft Edge or Brave browser ")
         }
@@ -324,10 +369,10 @@ function updateLocalStorage() {
 renderUIcolor();
 
 
-export function AlertMassage(alertType,alertMassage){
+export function AlertMassage(alertType, alertMassage) {
     const mssDiv = document.createElement("div")
     // mssDiv.setAttribute("class","alertMassage");
-    if(alertType == "success"){
+    if (alertType == "success") {
         mssDiv.innerHTML = `
              <div class="alertMassage" style="border: 1px solid #008000">
             <h3 style="display: flex; justify-content: start; align-items: center;">
@@ -342,8 +387,8 @@ export function AlertMassage(alertType,alertMassage){
             </h3>
         </div>
         `;
-    }else{
-         mssDiv.innerHTML = `
+    } else {
+        mssDiv.innerHTML = `
              <div class="alertMassage" style="border: 0.5px solid rgb(255, 0, 0)">
             <h3 style="display: flex; justify-content: start; align-items: center;">
                 <span style="margin: 3px 10px 0 0;">
@@ -361,7 +406,7 @@ export function AlertMassage(alertType,alertMassage){
             </h3>
         </div>
         `;
-        console.log(alertMassage,alertType)
+        console.log(alertMassage, alertType)
     }
     document.body.appendChild(mssDiv);
 
@@ -369,13 +414,13 @@ export function AlertMassage(alertType,alertMassage){
         const alertMassage = document.querySelector(".alertMassage");
         alertMassage.style.top = "7%";
     }, 10);
-    
+
     setTimeout(() => {
         const alertMassage = document.querySelector(".alertMassage");
         alertMassage.style.top = "-7%";
     }, 1800);
 
-   setTimeout(() => {
-    document.body.removeChild(mssDiv);
-   }, 2000);
+    setTimeout(() => {
+        document.body.removeChild(mssDiv);
+    }, 2000);
 }

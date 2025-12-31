@@ -2,7 +2,7 @@ import { AlertMassage } from "./main.js"
 const createNewTab_button = document.getElementById("createNewTab_button");
 const LOCAL_STORAGE_KEY_CREATE_TAB = "myTabs";
 let myTabName = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY_CREATE_TAB)) || [];
-
+export default myTabName
 //============================  tab creatation and some oparetions ===================================
 createNewTab_button.addEventListener("click", () => {
     const divCreateNewTab = document.createElement("div");
