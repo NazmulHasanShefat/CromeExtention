@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./utils.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/utils.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
@@ -18,72 +18,6 @@
 </head>
 
 <body style="height: 400px; width: 250px; border-radius: 10px; background-color: rgb(199, 199, 199);">
-    <!-- <div class="drop_shadow"></div>
-    <div class="popup">
-        <div class="close">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" fill="none">
-                <path fill-rule="evenodd" clip-rule="evenodd"
-                    d="M5.29289 5.29289C5.68342 4.90237 6.31658 4.90237 6.70711 5.29289L12 10.5858L17.2929 5.29289C17.6834 4.90237 18.3166 4.90237 18.7071 5.29289C19.0976 5.68342 19.0976 6.31658 18.7071 6.70711L13.4142 12L18.7071 17.2929C19.0976 17.6834 19.0976 18.3166 18.7071 18.7071C18.3166 19.0976 17.6834 19.0976 17.2929 18.7071L12 13.4142L6.70711 18.7071C6.31658 19.0976 5.68342 19.0976 5.29289 18.7071C4.90237 18.3166 4.90237 17.6834 5.29289 17.2929L10.5858 12L5.29289 6.70711C4.90237 6.31658 4.90237 5.68342 5.29289 5.29289Z"
-                    fill="#0F1729" />
-            </svg>
-        </div>
-        <div class="cp_btn_container"> <button type="button" class="pick_button" id="copy_rgba">copy rgba</button></div>
-        <div class="p_color_box">
-            <span>23423</span>
-            <span style="float: inline-end; cursor: pointer;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="15px" height="17px" viewBox="0 0 24 24" fill="none">
-                    <path opacity="0.5"
-                        d="M16 4.00195C18.175 4.01406 19.3529 4.11051 20.1213 4.87889C21 5.75757 21 7.17179 21 10.0002V16.0002C21 18.8286 21 20.2429 20.1213 21.1215C19.2426 22.0002 17.8284 22.0002 15 22.0002H9C6.17157 22.0002 4.75736 22.0002 3.87868 21.1215C3 20.2429 3 18.8286 3 16.0002V10.0002C3 7.17179 3 5.75757 3.87868 4.87889C4.64706 4.11051 5.82497 4.01406 8 4.00195"
-                        stroke="#1C274C" stroke-width="1.5" />
-                    <path d="M8 14H16" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" />
-                    <path d="M7 10.5H17" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" />
-                    <path d="M9 17.5H15" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" />
-                    <path
-                        d="M8 3.5C8 2.67157 8.67157 2 9.5 2H14.5C15.3284 2 16 2.67157 16 3.5V4.5C16 5.32843 15.3284 6 14.5 6H9.5C8.67157 6 8 5.32843 8 4.5V3.5Z"
-                        stroke="#1C274C" stroke-width="1.5" />
-                </svg>
-            </span>
-        </div>
-        <div class="cp_btn_container"> <button type="button" class="pick_button" id="copy_rgba">copy rgba</button></div>
-        <div class="p_color_box">
-            <span>23432</span>
-             <span style="float: inline-end; cursor: pointer;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="15px" height="17px" viewBox="0 0 24 24" fill="none">
-                    <path opacity="0.5"
-                        d="M16 4.00195C18.175 4.01406 19.3529 4.11051 20.1213 4.87889C21 5.75757 21 7.17179 21 10.0002V16.0002C21 18.8286 21 20.2429 20.1213 21.1215C19.2426 22.0002 17.8284 22.0002 15 22.0002H9C6.17157 22.0002 4.75736 22.0002 3.87868 21.1215C3 20.2429 3 18.8286 3 16.0002V10.0002C3 7.17179 3 5.75757 3.87868 4.87889C4.64706 4.11051 5.82497 4.01406 8 4.00195"
-                        stroke="#1C274C" stroke-width="1.5" />
-                    <path d="M8 14H16" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" />
-                    <path d="M7 10.5H17" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" />
-                    <path d="M9 17.5H15" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" />
-                    <path
-                        d="M8 3.5C8 2.67157 8.67157 2 9.5 2H14.5C15.3284 2 16 2.67157 16 3.5V4.5C16 5.32843 15.3284 6 14.5 6H9.5C8.67157 6 8 5.32843 8 4.5V3.5Z"
-                        stroke="#1C274C" stroke-width="1.5" />
-                </svg>
-            </span>
-        </div>
-        <div class="cp_btn_container"> <button type="button" class="pick_button" id="copy_rgba">copy rgba</button></div>
-        <div class="p_color_box">
-            <span>23424</span>
-             <span style="float: inline-end; cursor: pointer;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="15px" height="17px" viewBox="0 0 24 24" fill="none">
-                    <path opacity="0.5"
-                        d="M16 4.00195C18.175 4.01406 19.3529 4.11051 20.1213 4.87889C21 5.75757 21 7.17179 21 10.0002V16.0002C21 18.8286 21 20.2429 20.1213 21.1215C19.2426 22.0002 17.8284 22.0002 15 22.0002H9C6.17157 22.0002 4.75736 22.0002 3.87868 21.1215C3 20.2429 3 18.8286 3 16.0002V10.0002C3 7.17179 3 5.75757 3.87868 4.87889C4.64706 4.11051 5.82497 4.01406 8 4.00195"
-                        stroke="#1C274C" stroke-width="1.5" />
-                    <path d="M8 14H16" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" />
-                    <path d="M7 10.5H17" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" />
-                    <path d="M9 17.5H15" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" />
-                    <path
-                        d="M8 3.5C8 2.67157 8.67157 2 9.5 2H14.5C15.3284 2 16 2.67157 16 3.5V4.5C16 5.32843 15.3284 6 14.5 6H9.5C8.67157 6 8 5.32843 8 4.5V3.5Z"
-                        stroke="#1C274C" stroke-width="1.5" />
-                </svg>
-            </span>
-        </div>
-        <div class="dt_btn_container">
-            <button type="button" class="btn_delete" id="delete">
-                delete
-            </button>
-        </div>
-    </div> -->
     <div class="wraper">
         <nav class="navigationPanal"
             style="display: flex; justify-content: end; align-items:center; gap: 8px; margin: 0 13px;">
@@ -127,21 +61,7 @@
         </nav>
         <hr>
         <div class="card">
-
-            <!-- <div class="folder">
-                <div class="close_folder">
-                     <svg xmlns="http://www.w3.org/2000/svg" width="12px" height="12px" viewBox="0 0 24 24"
-                        fill="none">
-                        <path fill-rule="avoid" clip-rule="evenodd"
-                            d="M5.29289 5.29289C5.68342 4.90237 6.31658 4.90237 6.70711 5.29289L12 10.5858L17.2929 5.29289C17.6834 4.90237 18.3166 4.90237 18.7071 5.29289C19.0976 5.68342 19.0976 6.31658 18.7071 6.70711L13.4142 12L18.7071 17.2929C19.0976 17.6834 19.0976 18.3166 18.7071 18.7071C18.3166 19.0976 17.6834 19.0976 17.2929 18.7071L12 13.4142L6.70711 18.7071C6.31658 19.0976 5.68342 19.0976 5.29289 18.7071C4.90237 18.3166 4.90237 17.6834 5.29289 17.2929L10.5858 12L5.29289 6.70711C4.90237 6.31658 4.90237 5.68342 5.29289 5.29289Z" />
-                    </svg>
-                </div>
-                <div class="folder-icon-container">
-                    <div class="main-icon" style="background-color: red;"></div>
-                </div>
-                <p style="font-size: .5rem; margin:0;">folder</p>
-            </div> -->
-
+            <!-- folders -->
         </div>
     </div><!--wrapper-->
     <div class="pickColor_container">
@@ -151,127 +71,9 @@
         </button>
     </div>
 
-    <!-- settings panal -->
-    <!-- <div class="settings_panal">
-        <h1>color picker options</h1>
-        <hr>
-        <div class="seting_options">
-            <div class="setting_1">
-                <label for="clipBord_colorFormate">
-                <p>Automatically copy picked color to clipboard.</p>
-                <input type="checkbox" name="clipbordColorFormate" id="clipBord_colorFormate">
-                </label>
-            </div>
-            <div class="setting_1">
-                <label for="showLowerCase">
-                <p>Show Hex codes in lowercase.</p>
-                <input type="checkbox" name="clipbordColorFormate" id="showLowerCase">
-                </label>
-            </div>
-            <div class="setting_1">
-                <label for="enableKyeShotCut">
-                <p>Enable color picking from page using keyboard shortcut Press <br> <kbd>Ctrl</kbd> + <kbd>Z</kbd></p>
-                <input type="checkbox" name="clipbordColorFormate" id="enableKyeShotCut">
-                </label>
-            </div>
-            <div class="setting_1">
-                <label for="darkMood">
-                <p>Dark mood</p>
-                <input type="checkbox" name="clipbordColorFormate" id="darkMood">
-                </label>
-            </div>
-        </div>
-        <div class="settings_btn">
-            <button type="button" id="closeSettings">Close</button>
-            <button type="button" id="saveSettings">Save</button>
-        </div>
-      </div> -->
-
-    <!-- create new tab panal -->
-    <!-- <div class="drop_shadow"></div>
-     <div class="createTab_container">
-        <div class="close_create_tab">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" fill="none">
-                <path fill-rule="evenodd" clip-rule="evenodd"
-                    d="M5.29289 5.29289C5.68342 4.90237 6.31658 4.90237 6.70711 5.29289L12 10.5858L17.2929 5.29289C17.6834 4.90237 18.3166 4.90237 18.7071 5.29289C19.0976 5.68342 19.0976 6.31658 18.7071 6.70711L13.4142 12L18.7071 17.2929C19.0976 17.6834 19.0976 18.3166 18.7071 18.7071C18.3166 19.0976 17.6834 19.0976 17.2929 18.7071L12 13.4142L6.70711 18.7071C6.31658 19.0976 5.68342 19.0976 5.29289 18.7071C4.90237 18.3166 4.90237 17.6834 5.29289 17.2929L10.5858 12L5.29289 6.70711C4.90237 6.31658 4.90237 5.68342 5.29289 5.29289Z"
-                    fill="#0F1729" />
-            </svg>
-        </div>
-        <div>
-            <h3>Create new tab</h3>
-            <input type="text" name="tabName" id="tabNameInput">
-        </div>
-        <div class="buttons_createTab">
-            <button type="button" class="btn_close">Close</button>
-            <button type="button" class="btn_success">Create</button>
-        </div>
-    </div> -->
-
-
-    <!-- select tab -->
-    <!--  <div class="tabSelectionModal">
-        <div class="closeSelection_modal">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" fill="none">
-                <path fill-rule="evenodd" clip-rule="evenodd"
-                    d="M5.29289 5.29289C5.68342 4.90237 6.31658 4.90237 6.70711 5.29289L12 10.5858L17.2929 5.29289C17.6834 4.90237 18.3166 4.90237 18.7071 5.29289C19.0976 5.68342 19.0976 6.31658 18.7071 6.70711L13.4142 12L18.7071 17.2929C19.0976 17.6834 19.0976 18.3166 18.7071 18.7071C18.3166 19.0976 17.6834 19.0976 17.2929 18.7071L12 13.4142L6.70711 18.7071C6.31658 19.0976 5.68342 19.0976 5.29289 18.7071C4.90237 18.3166 4.90237 17.6834 5.29289 17.2929L10.5858 12L5.29289 6.70711C4.90237 6.31658 4.90237 5.68342 5.29289 5.29289Z"
-                    fill="#0F1729" />
-            </svg>
-        </div>
-
-        <div class="selectable_tabTitle">
-            <div class="selectable_tabTitleName">Select your tab</div>
-        </div>
-        <div class="selectable_tablist">
-            <div class="selectable_tabItem">tab 1</div>
-            <div class="selectable_tabItem">tab 1</div>
-            <div class="selectable_tabItem">tab 1</div>
-            <div class="selectable_tabItem">tab 1</div>
-            <div class="selectable_tabItem">tab 1</div>
-            <div class="selectable_tabItem">tab 1</div>
-            <div class="selectable_tabItem">tab 1</div>
-        </div>
-    </div> -->
-
-
-
-    <!-- <div class="switchTab_modal">
-        <div class="close_btn_switchTab">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14px" height="14px" viewBox="0 0 24 24" fill="none">
-                <path fill-rule="evenodd" clip-rule="evenodd"
-                    d="M5.29289 5.29289C5.68342 4.90237 6.31658 4.90237 6.70711 5.29289L12 10.5858L17.2929 5.29289C17.6834 4.90237 18.3166 4.90237 18.7071 5.29289C19.0976 5.68342 19.0976 6.31658 18.7071 6.70711L13.4142 12L18.7071 17.2929C19.0976 17.6834 19.0976 18.3166 18.7071 18.7071C18.3166 19.0976 17.6834 19.0976 17.2929 18.7071L12 13.4142L6.70711 18.7071C6.31658 19.0976 5.68342 19.0976 5.29289 18.7071C4.90237 18.3166 4.90237 17.6834 5.29289 17.2929L10.5858 12L5.29289 6.70711C4.90237 6.31658 4.90237 5.68342 5.29289 5.29289Z"
-                    fill="none"></path>
-            </svg>
-        </div>
-        <h3>Switch tab</h3>
-        <div class="tabList_container">
-            <div class="TabItem">
-                <div class="tabItemText">tab new tab asf asdf a fsafdsafsafsadfsadfsa</div>
-                <div class="tabControlers">
-                    <div class="tabContolers_icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14px" height="18px" viewBox="0 0 24 24"
-                            fill="none">
-                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                d="M5.29289 5.29289C5.68342 4.90237 6.31658 4.90237 6.70711 5.29289L12 10.5858L17.2929 5.29289C17.6834 4.90237 18.3166 4.90237 18.7071 5.29289C19.0976 5.68342 19.0976 6.31658 18.7071 6.70711L13.4142 12L18.7071 17.2929C19.0976 17.6834 19.0976 18.3166 18.7071 18.7071C18.3166 19.0976 17.6834 19.0976 17.2929 18.7071L12 13.4142L6.70711 18.7071C6.31658 19.0976 5.68342 19.0976 5.29289 18.7071C4.90237 18.3166 4.90237 17.6834 5.29289 17.2929L10.5858 12L5.29289 6.70711C4.90237 6.31658 4.90237 5.68342 5.29289 5.29289Z"
-                                ></path>
-                        </svg>
-                    </div>
-
-                    <div class="tabContolers_icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="#000000" width="14px" height="18px"
-                            viewBox="0 0 24 24">
-                            <path fill-rule="evenodd"
-                                d="M14.8024118,6.44526791 L8.69610276,12.549589 C8.29095108,12.9079238 8.04030835,13.4092335 8,13.8678295 L8,16.0029438 L10.0639829,16.004826 C10.5982069,15.9670062 11.0954869,15.7183782 11.4947932,15.2616227 L17.556693,9.19972295 L14.8024118,6.44526791 Z M16.2168556,5.0312846 L18.9709065,7.78550938 L19.8647941,6.89162181 C19.9513987,6.80501747 20.0000526,6.68755666 20.0000526,6.56507948 C20.0000526,6.4426023 19.9513987,6.32514149 19.8647932,6.23853626 L17.7611243,4.13485646 C17.6754884,4.04854589 17.5589355,4 17.43735,4 C17.3157645,4 17.1992116,4.04854589 17.1135757,4.13485646 L16.2168556,5.0312846 Z M22,13 L22,20 C22,21.1045695 21.1045695,22 20,22 L4,22 C2.8954305,22 2,21.1045695 2,20 L2,4 C2,2.8954305 2.8954305,2 4,2 L11,2 L11,4 L4,4 L4,20 L20,20 L20,13 L22,13 Z M17.43735,2 C18.0920882,2 18.7197259,2.26141978 19.1781068,2.7234227 L21.2790059,4.82432181 C21.7406843,5.28599904 22.0000526,5.91216845 22.0000526,6.56507948 C22.0000526,7.21799052 21.7406843,7.84415992 21.2790068,8.30583626 L12.9575072,16.6237545 C12.2590245,17.4294925 11.2689,17.9245308 10.1346,18.0023295 L6,18.0023295 L6,17.0023295 L6.00324765,13.7873015 C6.08843822,12.7328366 6.57866679,11.7523321 7.32649633,11.0934196 L15.6953877,2.72462818 C16.1563921,2.2608295 16.7833514,2 17.43735,2 Z" />
-                        </svg>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-
-
-    <script src="./main.js" type="module"></script>
-    <script src="./navigation.js"></script>
-    <script src="./handleTabs.js" type="module"></script>
+    <script src="./js/main.js" type="module"></script>
+    <script src="./js/navigation.js"></script>
+    <script src="./js/handleTabs.js" type="module"></script>
 </body>
 
 </html>
