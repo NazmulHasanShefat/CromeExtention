@@ -1,0 +1,655 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --background: rgb(255, 255, 255);
+    --color: #000000;
+    --gradientBackground: linear-gradient(90deg, #ff0080, #7928ca);
+}
+
+body,
+html {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    color: var(--color);
+}
+
+/* navigation */
+hr {
+    border: none;
+    height: 1px;
+    background-color: rgba(185, 185, 185, 0.904);
+    margin-bottom: 4px;
+}
+
+/* with plus icon */
+.plus_container {
+    position: relative;
+}
+
+#nav_plusIcon {
+    transition: all .3s ease-in-out;
+    background: linear-gradient(90deg, #ff0080, #7928ca);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    &:hover {
+        transform: scale(1.2) rotate(90deg);
+    }
+}
+
+/* menus list */
+.menus_list {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) scale(0);
+    width: max-content;
+    padding: 5px;
+    height: max-content;
+    top: 25px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    z-index: 99;
+    transition: .3s ease-in-out;
+    transform-origin: top center;
+
+    li {
+        padding: 3px 8px;
+        cursor: pointer;
+        list-style: none;
+
+        a {
+            text-decoration: none;
+            color: var(--color);
+            display: block;
+        }
+
+        &:hover {
+            background-color: #e6e6e6;
+        }
+    }
+}
+
+.active_tabsMenu {
+    transform: translateX(-50%) scale(1);
+}
+
+/* with plus icon */
+
+.setting_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+
+    &:hover {
+        transform: rotate(90deg);
+    }
+}
+
+.navigationPanal {
+    padding: 4px 0;
+}
+
+#select_mood {
+    border: none;
+    outline: none;
+}
+
+.clearAllBtn {
+    text-decoration: underline;
+    cursor: pointer;
+    color: gray;
+
+    &:hover {
+        color: red;
+    }
+}
+
+/* navigation */
+.wraper {
+    width: 99%;
+    height: 100%;
+    background-color: var(--background);
+    overflow-y: auto;
+}
+
+.card {
+    width: 99%;
+    height: max-content;
+    background-color: var(--background);
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: start;
+    align-items: start;
+    gap: 8px;
+}
+
+.folder {
+    /* width: 60px; */
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    align-items: center;
+    flex-direction: column;
+    background-color: #f0f4f9;
+    cursor: pointer;
+    position: relative;
+
+    &:hover {
+        background-color: #dddddd;
+    }
+}
+
+.folder_name {
+    font-family: "JetBrains Mono", monospace;
+}
+
+.pickColor_container {
+    width: 100%;
+    height: max-content;
+    background-color: var(--background);
+    padding: 10px 0 5px 0;
+}
+
+.folder-icon-container {
+    margin-top: 5px;
+    width: 80%;
+    height: 85%;
+
+    .main-icon {
+        height: 100%;
+        width: 100%;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        /* border: 1px solid gray; */
+        clip-path: polygon(33% 0, 42% 16%, 100% 16%, 100% 99%, 0 100%, 0 0);
+    }
+}
+
+.pick_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    outline: none;
+    padding: 4px 15px;
+    border-radius: 3px;
+    margin: 10px auto;
+    cursor: pointer;
+    position: relative;
+    background-color: black;
+    border-radius: 10px;
+    font-family: "JetBrains Mono", monospace;
+    color: #fff;
+    gap: 5px;
+    transition: all .3s ease-in-out;
+    z-index: 9999 !important;
+
+    &:hover {
+        scale: 1.2;
+    }
+
+    &::before {
+        position: absolute;
+        content: "";
+        left: 50%;
+        top: 50%;
+        /* background: #ff0000; */
+        background: linear-gradient(45deg, rgba(255, 0, 0, 1) 0%, rgba(208, 0, 255, 1) 50%, rgba(69, 87, 252, 1), rgb(252, 69, 145) 100%);
+        height: 100%;
+        background-size: 500px;
+        background-position: 0;
+        width: 100%;
+        padding: 2px;
+        border-radius: 10px;
+        transform: translate(-50%, -50%);
+        z-index: -1;
+        transition: all .5s ease-in-out;
+        animation: glowborder 6s linear infinite;
+    }
+}
+
+@keyframes glowborder {
+    0% {
+        background-position: 0px;
+    }
+
+    50% {
+        background-position: -350px;
+    }
+
+    100% {
+        background-position: 0px;
+    }
+}
+
+.popup {
+    width: 80%;
+    height: max-content;
+    background-color: rgb(255, 255, 255);
+    position: fixed;
+    left: 50%;
+    top: 35%;
+    opacity: 0;
+    transition: all .3s;
+    padding: 20px;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+    z-index: 6;
+    transition: .3s ease-in-out;
+}
+
+.popupShow_color {
+    position: absolute;
+    left: 160px;
+    top: 223px;
+    height: 13px;
+    width: 13px;
+    z-index: 99;
+    border-radius: 50%;
+}
+
+.drop_shadow {
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    background-color: #4646469f;
+    z-index: 5;
+}
+
+.cp_btn_container {
+    display: flex;
+    justify-content: end;
+    padding: 20px 0 0 0;
+
+}
+
+.dt_btn_container {
+    display: flex;
+    justify-content: end;
+    padding: 10px 0 0 0;
+
+}
+
+.p_color_box {
+    padding: 6px 9px;
+    margin: 5px 0;
+    background-color: #dbdbdb;
+    font-weight: 600;
+    border-radius: 4px;
+    font-family: "JetBrains Mono", monospace;
+}
+
+.close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+}
+
+.btn_delete {
+    border: none;
+    outline: none;
+    background-color: red;
+    color: #fff;
+    padding: 4px 8px;
+    font-size: .9rem;
+    border-radius: 4px;
+    right: 10px;
+    bottom: 10px;
+    cursor: pointer;
+}
+
+#copy_rgb,
+#copy_hex,
+#copy_hsl {
+    font-size: .5rem;
+    margin: 0;
+    scale: 0.8;
+
+    &:active {
+        scale: 0.7;
+    }
+}
+
+.close_folder {
+    position: absolute;
+    right: 3px;
+    top: -5px;
+    cursor: pointer;
+
+    svg path {
+        fill: black;
+    }
+
+    &:hover {
+        svg path {
+            fill: rgb(255, 0, 0);
+        }
+    }
+}
+
+/* settings panal  */
+.settings_panal {
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    opacity: 0;
+    transition: all .3s ease-in-out;
+    transform: translate(-50%, -50%);
+    height: 300px;
+    width: 90%;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    z-index: 99999;
+
+    .seting_options {
+        padding: 0 10px 10px 10px;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 1rem;
+        padding: 10px 0;
+    }
+
+    label {
+        display: flex;
+        justify-content: space-between;
+        margin: 13px 0;
+        color: rgb(122, 122, 122);
+    }
+
+    .settings_btn {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+
+        button {
+            cursor: pointer;
+            border: none;
+            outline: none;
+            background-color: rgb(0, 105, 204);
+            color: #fff;
+            border-radius: 6px;
+            padding: 5px 8px;
+        }
+
+        #closeSettings {
+            margin-right: 8px;
+            background-color: rgb(219, 1, 1);
+        }
+    }
+}
+
+/* ====================================== switch tab function ui =================================== */
+.switch_tab {
+    position: relative;
+
+    .currentTab {
+        padding: 4px 10px;
+        cursor: pointer;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+
+        p {
+            transition: all .3s ease-in-out;
+            background: linear-gradient(90deg, #ff0080, #7928ca);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        &:hover {
+            background-color: #d1d1d1;
+        }
+    }
+
+}
+
+/* ============================================== tab switch modal ======================================= */
+
+.switchTab_modal {
+    width: 90%;
+    height: 298px;
+    background-color: #fff;
+    position: absolute;
+    top: 42%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 6px;
+    padding: 13px;
+    z-index: 999;
+
+    h3 {
+        padding: 5px 8px;
+    }
+
+    .close_btn_switchTab {
+        position: absolute;
+        right: 10px;
+        top: 7px;
+        cursor: pointer;
+
+        svg path {
+            fill: var(--color);
+        }
+    }
+
+    .tabList_container {
+        width: 100%;
+        height: 90%;
+        overflow-y: auto;
+
+        /* padding:  0 0 0; */
+        .TabItem {
+            background: #e0e0e0;
+            padding: 9px 16px;
+            border-radius: 6px;
+            margin: 4px 0;
+            color: var(--color);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+
+            &:hover {
+                background: var(--gradientBackground);
+                color: #fff;
+                .tabControlers {
+                    .tabContolers_icon {
+                        svg path {
+                            fill: #fff;
+                        }
+                    }
+                }
+            }
+
+            .tabItemText {
+                width: 110px;
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-line-clamp: 1;
+                -webkit-box-orient: vertical;
+            }
+
+            .tabControlers {
+                position: absolute;
+                right: 10px;
+                display: flex;
+                justify-content: end;
+                align-items: center;
+                gap: 6px;
+
+                .tabContolers_icon {
+                    svg path {
+                        fill: var(--color);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.tabList_container::-webkit-scrollbar {
+    width: 3px;
+    background-color: #cfcfcf;
+}
+
+.tabList_container::-webkit-scrollbar-thumb {
+    background: var(--gradientBackground);
+}
+
+/*=============================================== create tab box ==========================================*/
+.createTab_container {
+    width: 80%;
+    height: 150px;
+    background-color: #ffffff;
+    position: absolute;
+    z-index: 999;
+    border-radius: 6px;
+    left: 50%;
+    top: 25%;
+    transition: all .2s ease-in-out;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    padding: 8px 20px;
+
+    h3 {
+        padding: 30px 0 5px 0;
+    }
+
+    #tabNameInput {
+        outline: none;
+        width: 100%;
+        height: 30px;
+        border: 1px solid rgb(255, 53, 204);
+        border-radius: 6px;
+        padding: 4px 8px;
+
+        &:focus {
+            border: 1px solid rgb(141, 42, 255);
+        }
+    }
+
+    .buttons_createTab {
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        padding: 20px 0;
+        gap: 5px;
+    }
+
+    .close_create_tab {
+        position: absolute;
+        right: 10px;
+        cursor: pointer;
+    }
+}
+
+/* for alert  */
+.alertMassage {
+    background-color: #ffffff;
+    border-radius: 6px;
+    width: 90%;
+    position: absolute;
+    left: 50%;
+    top: -7%;
+    transition: all .2s ease;
+    z-index: 99999;
+    padding: 4px 10px;
+    transform: translate(-50%, -50%) scale(0.9);
+    animation: strom .4s linear;
+}
+
+@keyframes strom {
+    0% {
+        transform: translate(-50%, -50%) scale(0.9);
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(0.9);
+    }
+}
+
+/* for js */
+.activeCurrentTab {
+    background-color: #dadada;
+}
+
+/* for js */
+
+
+/*========================= tab selection modal ======================*/
+.tabSelectionModal {
+    height: 230px;
+    width: 90%;
+    background-color: #fff;
+    border-radius: 6px;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    padding: 10px 20px 20px 20px;
+
+    /* overflow: auto; */
+    .closeSelection_modal {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        cursor: pointer;
+    }
+
+    .selectable_tablist {
+        width: 100%;
+        height: 170px;
+        overflow: auto;
+    }
+
+    .selectable_tabTitle {
+        width: 100%;
+        height: max-content;
+        padding: 7px 0px;
+    }
+
+    .selectable_tabItem {
+        width: 100%;
+        margin: 6px 0;
+        cursor: pointer;
+        padding: 7px 12px;
+        height: max-content;
+        border-radius: 5px;
+        background-color: #e6e6e6;
+        position: relative;
+
+        &:hover {
+            background: var(--gradientBackground);
+            color: #fff;
+        }
+    }
+}
+
+.selectable_tablist::-webkit-scrollbar {
+    background-color: #c0c0c0;
+    width: 4px;
+    height: 10px;
+}
+
+.selectable_tablist::-webkit-scrollbar-thumb {
+    background: var(--gradientBackground);
+}

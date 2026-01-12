@@ -1,10 +1,19 @@
 {
-    "manifest_version": 3,
-    "name": "Color picker",
-    "version": "1.2.2",
-    "description": "This is a color picker app you can coppy any website color",
-    "action": {
-         "default_popup": "index.html",
-         "default_icon": "./images/colorpicker.png"
+  "manifest_version": 3,
+  "name": "Color picker",
+  "version": "1.2.2",
+  "description": "This is a color picker app you can coppy any website color",
+  "icons": {
+    "16": "./images/colorpicker16.png",
+    "32": "./images/colorpicker32.png",
+    "48": "./images/colorpicker48.png",
+    "128": "./images/colorpicker128.png"
+  },
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": {
+      "16": "./images/colorpicker16.png",
+      "32": "./images/colorpicker32.png"
     }
   }
+}
