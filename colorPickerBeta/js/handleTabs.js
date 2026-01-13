@@ -171,6 +171,10 @@ function SwitchTabModal() {
                     TabItem.forEach(item => item.classList.remove("activeTab"));
                     const targetedTabItem = myTabName.findIndex(item => item.tabName === e.target.dataset.tabname);
                     console.log(e.target.innerText)
+                    // remove modal 
+                    document.body.removeChild(tabList)
+                    document.body.removeChild(drop_shadow);
+
                     myTabName.forEach(item=>{
                         if(item.tabName === e.target.innerText){
                             item.tab_status = true;
@@ -180,7 +184,8 @@ function SwitchTabModal() {
                     })
                     myTabName[targetedTabItem].tab_status = true;
                     updateLoalStorage();
-                    renderTabListUI()
+                    renderTabListUI();
+                    showTabNameOnTopNavigation()
                 })
             })
 
@@ -209,3 +214,9 @@ function deleteTab(e, renderTabListUI) {
     }
 }
 
+function showTabNameOnTopNavigation(){
+    const result = myTabName.find(item => item.tab_status === true)
+    const selected_tab_name = document.querySelector("#selected_tab_name");
+    selected_tab_name.innerText = result.tabName
+}
+showTabNameOnTopNavigation();
