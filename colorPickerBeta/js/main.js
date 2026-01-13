@@ -161,10 +161,11 @@ const activateEyeDroper = async (selectableTabName) => {
                 rgbColor: rgb,
                 hexColor: sRGBHex,
                 hslColor: hsl,
-                tabName: selectableTabName
+                tabName: selectableTabName ? selectableTabName : "New tab 1"
             }
             // renderUIcolor()
         )
+        // updateLocalStorage();
         updateLocalStorage();
         renderUIcolor();
 
@@ -172,7 +173,6 @@ const activateEyeDroper = async (selectableTabName) => {
         console.error(error)
     }
 }
-
 // convert hex to rgb
 function hexToRGB(hex) {
     hex = hex.replace("#", "");
@@ -215,6 +215,14 @@ function hexToHsl(hex) {
 
 //display as folder all colors
 const container = document.querySelector(".card");
+
+// function get_filterd_colors(colors){
+//     return colors.tabName === ""
+// }
+// const filterd_colors = myColor.filter(get_filterd_colors)
+
+
+
 function renderUIcolor() {
     container.innerHTML = "";
     myColor.forEach(color => {
@@ -236,8 +244,6 @@ function renderUIcolor() {
         `;
         container.appendChild(colorPalet)
     });
-
-
 
     //delete single color action
     const close_folder = document.querySelectorAll(".close_folder");
@@ -367,8 +373,6 @@ function toggleColorModal(e) {
 
 
 }
-
-
 
 // save color on local storage
 function updateLocalStorage() {

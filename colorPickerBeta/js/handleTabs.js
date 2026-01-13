@@ -42,6 +42,7 @@ createNewTab_button.addEventListener("click", () => {
     tabNameInput.focus();
     setTabName.addEventListener("click", () => {
         const duplicateTab = myTabName.findIndex(item => item.tabName === tabNameInput.value)
+        showTabNameOnTopNavigation();
         console.log(duplicateTab);
         if (duplicateTab < 0) {
             if (myTabName.length < 1) {
@@ -85,7 +86,8 @@ function setLocalStorageNewTab(tabname, tabIsActive) {
         console.log(tabname);
         // renderTabListUI();
         updateLoalStorage();
-        AlertMassage("success", "Updated successfull.")
+        AlertMassage("success", "Updated successfull.");
+        showTabNameOnTopNavigation();
     }
 }
 function updateLoalStorage() {
@@ -121,7 +123,7 @@ function SwitchTabModal() {
     // close tablist modal div
     const close_btn_switchTab = document.querySelector(".close_btn_switchTab");
     close_btn_switchTab.addEventListener("click", () => {
-        document.body.removeChild(tabList)
+        document.body.removeChild(tabList);
         document.body.removeChild(drop_shadow);
     })
 
@@ -175,10 +177,10 @@ function SwitchTabModal() {
                     document.body.removeChild(tabList)
                     document.body.removeChild(drop_shadow);
 
-                    myTabName.forEach(item=>{
-                        if(item.tabName === e.target.innerText){
+                    myTabName.forEach(item => {
+                        if (item.tabName === e.target.innerText) {
                             item.tab_status = true;
-                        }else{
+                        } else {
                             item.tab_status = false;
                         }
                     })
@@ -211,12 +213,16 @@ function deleteTab(e, renderTabListUI) {
         myTabName.splice(RadyToDeleteTab, 1);
         updateLoalStorage();
         renderTabListUI();
+         AlertMassage("delete", "item deleted");
+        window.location.reload();
     }
 }
 
-function showTabNameOnTopNavigation(){
+function showTabNameOnTopNavigation() {
     const result = myTabName.find(item => item.tab_status === true)
     const selected_tab_name = document.querySelector("#selected_tab_name");
-    selected_tab_name.innerText = result.tabName
+    if (result) {
+        selected_tab_name.innerText = result.tabName
+    }
 }
 showTabNameOnTopNavigation();
