@@ -27,6 +27,7 @@ createNewTab_button.addEventListener("click", () => {
     </div>
     `;
     document.body.appendChild(divCreateNewTab);
+
     const createTab_container = document.querySelector(".createTab_container");
     // for animation
     setTimeout(() => {
@@ -36,14 +37,20 @@ createNewTab_button.addEventListener("click", () => {
 
     // for input 
     const tabNameInput = document.querySelector("#tabNameInput");
-    tabNameInput.value = "New tab 2";
+    tabNameInput.value = "New tab 1";
     const setTabName = document.querySelector("#setTabName");
+    tabNameInput.focus();
     setTabName.addEventListener("click", () => {
         const duplicateTab = myTabName.findIndex(item => item.tabName === tabNameInput.value)
         console.log(duplicateTab);
         if (duplicateTab < 0) {
-            setLocalStorageNewTab(tabNameInput.value);
-        } else {
+            if (myTabName.length < 1) {
+                setLocalStorageNewTab(tabNameInput.value, true);
+            } else {
+                setLocalStorageNewTab(tabNameInput.value, false);
+            }
+        }
+        else {
             AlertMassage("false", "Same item is exist");
         }
 
@@ -66,11 +73,12 @@ createNewTab_button.addEventListener("click", () => {
 
 
 // ======================================= = set new tab on local storage ===================================
-function setLocalStorageNewTab(tabname) {
+function setLocalStorageNewTab(tabname, tabIsActive) {
     if (tabname.length > 1) {
         myTabName.push({
             id: myTabName.length,
             tabName: tabname,
+            tab_status: tabIsActive
         })
         // check duplicate tabs
         // myTabName.forEach(tabs => {});
@@ -105,7 +113,7 @@ function SwitchTabModal() {
  
    `;
     document.body.appendChild(drop_shadow);
-    document.body.appendChild(tabList);
+    document.body.prepend(tabList);
 
     const tabList_container = document.querySelector(".tabList_container");
     renderTabListUI(tabList_container)
@@ -122,8 +130,8 @@ function SwitchTabModal() {
         tabList_container.innerHTML = "";
         myTabName.forEach(tabs => {
             tabList_container.innerHTML += `
-         <div class="TabItem">
-                <div class="tabItemText">${tabs.tabName}</div>
+         <div class="TabItem" data-tabname="${tabs.tabName}" data-tab_status="${tabs.tab_status}">
+                <div class="tabItemText" style="pointer-events: none;">${tabs.tabName}</div>
                 <div class="tabControlers">
                 
                 <div class="tabContolers_icon">
@@ -153,7 +161,20 @@ function SwitchTabModal() {
                     deleteTab(e.target.dataset.dltid, renderTabListUI);
                 });
             })
-    
+
+            const TabItem = document.querySelectorAll(".TabItem");
+            TabItem.forEach(myTabItems => {
+                if (myTabItems.dataset.tab_status === "true") {
+                    myTabItems.classList.add("activeTab")
+                }
+                myTabItems.addEventListener("click", (e) => {
+                    TabItem.forEach(item => item.classList.remove("activeTab"));
+                    const targetedTabItem = myTabName.findIndex(item => item.tabName === e.target.dataset.tabname);
+                    myTabName[targetedTabItem].tab_status = true;
+                    updateLoalStorage();
+                })
+            })
+
         });
     }
 }
@@ -166,7 +187,7 @@ switchTab_trigger.addEventListener("click", () => {
 })
 
 // =========================================== delete tab =========================================================
-function deleteTab(e,renderTabListUI) {
+function deleteTab(e, renderTabListUI) {
     const TabDeleteId = parseFloat(e)
     const RadyToDeleteTab = myTabName.findIndex(item => {
         return item.id === TabDeleteId

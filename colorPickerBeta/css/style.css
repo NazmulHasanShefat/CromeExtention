@@ -466,6 +466,7 @@ hr {
             &:hover {
                 background: var(--gradientBackground);
                 color: #fff;
+
                 .tabControlers {
                     .tabContolers_icon {
                         svg path {
@@ -498,8 +499,22 @@ hr {
                 }
             }
         }
+        .activeTab {
+            background: var(--gradientBackground);
+            color: #fff;
+            .tabControlers {
+                .tabContolers_icon {
+                    svg path {
+                        fill: #fff;
+                    }
+                }
+            }
+        }
     }
 }
+
+
+
 
 .tabList_container::-webkit-scrollbar {
     width: 3px;
