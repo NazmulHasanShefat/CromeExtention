@@ -1,14 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .angle{color:red;}
+        :root {
+            --background: #ffffff;
+            --foreground: #09090b;
+            --border: #e4e4e7;
+            --radius: 8px;
+            --shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        .sonner-container {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 9999;
+        }
+
+        .sonner-toast {
+            background: var(--background);
+            color: var(--foreground);
+            border: 1px solid var(--border);
+            padding: 16px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            min-width: 300px;
+            font-family: sans-serif;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            /* প্রবেশ করার অ্যানিমেশন */
+            animation: slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .sonner-toast.hide {
+            transform: scale(0.9);
+            opacity: 0;
+        }
+
+        .trigger-btn {
+            padding: 10px 20px;
+            background: #09090b;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+     
     </style>
 </head>
+
 <body>
-    <span class="angle">&lt;</span>h1 class="hading"<span class="angle">&gt;</span> Welcome to HTML to lt gt converter <span class="angle">&lt;</span><span class="close">/</span>h1<span class="angle">&gt;</span>
+    <div id="sonner-container" class="sonner-container"></div>
+
+    <button class="trigger-btn" onclick="toast('প্রজেক্ট সফলভাবে সেভ হয়েছে!')">
+        Show Toast
+    </button>
+
+
+    <script>
+        function toast(message) {
+            const container = document.getElementById('sonner-container');
+
+            // ১. নতুন টোস্ট এলিমেন্ট তৈরি
+            const toastElement = document.createElement('div');
+            toastElement.className = 'sonner-toast';
+
+            // টোস্টের ভেতর কন্টেন্ট সেট করা
+            toastElement.innerHTML = `
+    <span>${message}</span>
+    <button onclick="this.parentElement.remove()" style="background:none; border:none; cursor:pointer; opacity:0.5">✕</button>
+  `;
+
+            // ২. কন্টেইনারে যুক্ত করা (prepend ব্যবহার করছি যাতে নতুনটা উপরে থাকে)
+            container.prepend(toastElement);
+
+            // ৩. ৪ সেকেন্ড পর স্বয়ংক্রিয়ভাবে মুছে ফেলা
+            setTimeout(() => {
+                toastElement.classList.add('hide');
+                setTimeout(() => {
+                    toastElement.remove();
+                }, 300); // অ্যানিমেশন শেষ হওয়ার জন্য অপেক্ষা
+            }, 4000);
+        }
+    </script>
 </body>
+
 </html>

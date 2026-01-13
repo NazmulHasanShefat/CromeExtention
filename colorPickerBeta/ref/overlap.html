@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       .sonner-container {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.sonner-toast {
+  position: absolute;
+  bottom: 0;
+  width: 350px;
+  background: white;
+  border: 1px solid #e4e4e7;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* গভীরতা বোঝাতে শ্যাডো */
+  font-family: sans-serif;
+  transition: all 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+  pointer-events: auto;
+  
+  /* নতুন টোস্ট আসার সময় নিচ থেকে উপরে স্লাইড করবে */
+  animation: sonner-slide-up 0.4s ease-out forwards;
+}
+
+/* ১ নম্বর চাইল্ড (সবার উপরে নতুন টোস্ট) */
+.sonner-toast:nth-child(1) {
+  z-index: 100;
+  transform: translateY(0) scale(1);
+}
+
+/* ২য় টোস্ট (একটু উপরে উঠবে এবং ছোট হবে) */
+.sonner-toast:nth-child(2) {
+  z-index: 90;
+  transform: translateY(-12px) scale(0.95);
+}
+
+/* ৩য় টোস্ট (আরও উপরে উঠবে এবং আরও ছোট হবে) */
+.sonner-toast:nth-child(3) {
+  z-index: 80;
+  transform: translateY(-24px) scale(0.9);
+}
+
+/* ৪ নম্বর বা তার পরের গুলোকে অনেক উপরে তুলে রাখা যাতে দেখা না যায় */
+.sonner-toast:nth-child(n+4) {
+  transform: translateY(-40px) scale(0.85);
+  visibility: hidden; /* অপাসিটির বদলে এটি ব্যবহার করা নিরাপদ */
+}
+
+@keyframes sonner-slide-up {
+  from { transform: translateY(100%) scale(0.9); }
+  to { transform: translateY(0) scale(1); }
+}
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="sonner-container" class="sonner-container"></div>
+<button onclick="createToast('নতুন নোটিফিকেশন!')">Toast পাঠান</button>
+    </div>
+
+    <script>
+      function createToast(message) {
+    const container = document.getElementById('sonner-container');
+    const toast = document.createElement('div');
+    toast.className = 'sonner-toast';
+    
+    toast.innerHTML = `
+        <div style="display:flex; flex-direction:column; gap:4px;">
+            <span style="font-weight:600; font-size:14px; color:#18181b">Success</span>
+            <span style="font-size:13px; color:#71717a">${message}</span>
+        </div>
+    `;
+
+    // নতুন টোস্ট সবার উপরে ইনসার্ট করা
+    container.prepend(toast);
+
+    // ৪ সেকেন্ড পর রিমুভ করা
+    setTimeout(() => {
+        // আউট-অ্যানিমেশন (নিচে নেমে যাবে)
+        toast.style.transform = 'translateY(150%) scale(0.9)';
+        setTimeout(() => toast.remove(), 400);
+    }, 4000);
+}
+    </script>
+</body>
+
+</html>

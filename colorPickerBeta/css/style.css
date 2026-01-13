@@ -8,6 +8,7 @@
     --background: rgb(255, 255, 255);
     --color: #000000;
     --gradientBackground: linear-gradient(90deg, #ff0080, #7928ca);
+    --gradientBackgroundHover: linear-gradient(90deg, #ff0080ab, #7928ca7c);
 }
 
 body,
@@ -463,8 +464,8 @@ hr {
             align-items: center;
             position: relative;
 
-            &:hover {
-                background: var(--gradientBackground);
+            &:not(.activeTab):hover {
+                background: var(--gradientBackgroundHover);
                 color: #fff;
 
                 .tabControlers {
@@ -475,6 +476,19 @@ hr {
                     }
                 }
             }
+            &:active{
+                  background: var(--gradientBackground);
+                color: #fff;
+
+                .tabControlers {
+                    .tabContolers_icon {
+                        svg path {
+                            fill: #fff;
+                        }
+                    }
+                }
+            }
+
 
             .tabItemText {
                 width: 110px;

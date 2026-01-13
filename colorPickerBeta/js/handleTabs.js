@@ -170,8 +170,17 @@ function SwitchTabModal() {
                 myTabItems.addEventListener("click", (e) => {
                     TabItem.forEach(item => item.classList.remove("activeTab"));
                     const targetedTabItem = myTabName.findIndex(item => item.tabName === e.target.dataset.tabname);
+                    console.log(e.target.innerText)
+                    myTabName.forEach(item=>{
+                        if(item.tabName === e.target.innerText){
+                            item.tab_status = true;
+                        }else{
+                            item.tab_status = false;
+                        }
+                    })
                     myTabName[targetedTabItem].tab_status = true;
                     updateLoalStorage();
+                    renderTabListUI()
                 })
             })
 
